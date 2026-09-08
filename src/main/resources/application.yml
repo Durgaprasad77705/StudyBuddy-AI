@@ -1,29 +1,32 @@
 server:
-  port: 8099
+  port: ${PORT:8099}
+  address: 0.0.0.0
 
 spring:
   application:
     name: studybuddy-ai
+
   datasource:
     url: jdbc:h2:file:./data/aicoach;AUTO_SERVER=TRUE
     driver-class-name: org.h2.Driver
     username: sa
     password: ""
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: false
-    properties:
-      hibernate:
-        format_sql: true
+
   h2:
     console:
       enabled: true
       path: /h2-console
+
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+
   security:
     oauth2:
       client:
@@ -32,6 +35,7 @@ spring:
             client-id: ${GOOGLE_CLIENT_ID:not-configured-google-client-id}
             client-secret: ${GOOGLE_CLIENT_SECRET:not-configured-google-client-secret}
             scope: openid,profile,email
+
           github:
             client-id: ${GITHUB_CLIENT_ID:not-configured-github-client-id}
             client-secret: ${GITHUB_CLIENT_SECRET:not-configured-github-client-secret}
@@ -45,14 +49,16 @@ razorpay:
 app:
   jwt:
     secret: ${JWT_SECRET:change-this-super-secret-key-min-32-chars-long-please}
-    expiration-ms: ${JWT_EXPIRATION_MS:315360000000} # 10 years; persistent one-login local session
+    expiration-ms: ${JWT_EXPIRATION_MS:315360000000}
+
   cors:
-    allowed-origins: ${CORS_ORIGINS:http://localhost:8099,http://localhost:8080,http://localhost:3000}
+    allowed-origins: ${CORS_ORIGINS:http://localhost:8099}
+
   frontend:
     base-url: ${FRONTEND_BASE_URL:http://localhost:8099}
 
 ai:
-  provider: ${AI_PROVIDER:ollama}      # anthropic | none (falls back to static bank)
+  provider: ${AI_PROVIDER:ollama}
   api-key: ${ANTHROPIC_API_KEY:}
   model: ${AI_MODEL:claude-sonnet-4-6}
   fast-model: ${AI_FAST_MODEL:claude-haiku-4-5-20251001}
