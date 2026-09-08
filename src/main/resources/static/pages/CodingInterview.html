@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>AI Coding Interview</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/advanced-practice.css">
+
+</head>
+
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🤖 StudyBuddy AI
+    </div>
+
+    <nav>
+
+        <a href="AdvancedPractice.html">
+            ← Advanced Practice
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <span class="badge">
+            💻 LIVE AI CODING
+        </span>
+
+        <h1>
+            Coding Interview
+        </h1>
+
+        <p>
+            Solve a real AI-generated coding problem
+            and receive technical interview feedback.
+        </p>
+
+    </section>
+
+
+    <section class="coding-card">
+
+        <h2>
+            ⚙️ Interview Setup
+        </h2>
+
+
+        <div class="coding-controls">
+
+            <div class="field">
+
+                <label>
+                    Programming Language
+                </label>
+
+                <select id="language">
+
+                    <option value="Java">
+                        Java
+                    </option>
+
+                    <option value="Python">
+                        Python
+                    </option>
+
+                    <option value="C++">
+                        C++
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Problem Type
+                </label>
+
+                <select id="problemType">
+
+                    <option value="Arrays">
+                        Arrays
+                    </option>
+
+                    <option value="Strings">
+                        Strings
+                    </option>
+
+                    <option value="Linked List">
+                        Linked List
+                    </option>
+
+                    <option value="Trees">
+                        Trees
+                    </option>
+
+                    <option value="Graphs">
+                        Graphs
+                    </option>
+
+                    <option value="Dynamic Programming">
+                        Dynamic Programming
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Experience
+                </label>
+
+                <select id="experienceLevel">
+
+                    <option value="Entry">
+                        Entry
+                    </option>
+
+                    <option value="Mid">
+                        Mid
+                    </option>
+
+                    <option value="Senior">
+                        Senior
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;align-items:center;">
+        <button
+            id="generateProblem"
+            class="primary-button">
+
+            🤖 Generate Coding Problem
+
+        </button>
+        <a href="https://leetcode.com/accounts/login/" target="_blank" rel="noopener noreferrer" class="primary-button" style="text-decoration:none;background:#111827;">🔐 Open LeetCode Login</a>
+        <a href="https://leetcode.com/problemset/" target="_blank" rel="noopener noreferrer" style="padding:12px 18px;border-radius:10px;border:1px solid #dbe3f0;text-decoration:none;">🧩 LeetCode Problems</a>
+        </div>
+
+
+        <div
+            id="problemOutput"
+            class="output-box">
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="../js/api.js"></script>
+<script src="../js/coding.js"></script>
+<script src="../js/future-features.js"></script>
+
+</body>
+
+</html>

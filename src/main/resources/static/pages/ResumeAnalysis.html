@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analysis</title>
+
+    <link rel="stylesheet" href="../css/advanced-practice.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🤖 StudyBuddy AI
+    </div>
+
+    <nav>
+        <a href="AdvancedPractice.html">← Advanced Practice</a>
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <span class="badge">📄 AI RESUME ANALYSIS</span>
+
+        <h1>Resume Analyzer</h1>
+
+        <p>
+            Upload your resume and let AI analyze your
+            skills, education, projects, experience and
+            interview readiness.
+        </p>
+
+    </section>
+
+
+    <section class="coding-card">
+
+        <h2>📤 Upload Resume</h2>
+
+        <p style="margin-top:10px;color:#64748b;">
+            Supported formats: PDF, DOCX, TXT
+        </p>
+
+
+        <div style="margin-top:25px;">
+
+            <input
+                type="file"
+                id="resumeFile"
+                accept=".pdf,.docx,.txt">
+
+        </div>
+
+
+        <button
+            id="analyzeResume"
+            class="primary-button"
+            style="margin-top:20px;">
+
+            🤖 Analyze Resume
+
+        </button>
+
+
+        <div
+            id="resumeResult"
+            class="output-box">
+
+        </div>
+
+    </section>
+
+
+    <section class="coding-card">
+
+        <h2>🔍 AI Analysis Includes</h2>
+
+        <div class="tips-grid">
+
+            <div class="tips">
+                <h3>🎓 Education</h3>
+                <p>
+                    Degree, branch, CGPA and academic background.
+                </p>
+            </div>
+
+            <div class="tips">
+                <h3>💻 Technical Skills</h3>
+                <p>
+                    Java, Spring Boot, SQL, Python,
+                    frameworks and tools.
+                </p>
+            </div>
+
+            <div class="tips">
+                <h3>🚀 Projects</h3>
+                <p>
+                    Project technologies, responsibilities
+                    and technical strengths.
+                </p>
+            </div>
+
+            <div class="tips">
+                <h3>📊 Scored Result</h3>
+                <p>
+                    Skills, education, projects, experience, summary and certifications are scored out of 100.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="../js/api.js"></script>
+<script src="../js/resume.js"></script>
+<script src="../js/future-features.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>StudyBuddy AI — Group Discussion</title>
+<link rel="stylesheet" href="../css/advanced-practice.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body class="gd-page">
+<header class="gd-nav">
+  <div class="gd-brand">✦ <b>StudyBuddy AI</b></div>
+  <nav><a href="../index.html#/dashboard">Dashboard</a><a href="AdvancedPractice.html">Practice</a><a class="active" href="GroupInterview.html">Group Discussion</a></nav>
+</header>
+<main class="gd-container">
+  <section class="gd-hero">
+    <div>
+      <span class="gd-eyebrow">AI GROUP DISCUSSION LAB</span>
+      <h1>Practice group discussions<br><span>with a live AI panel.</span></h1>
+      <p>Choose a topic, enter the room, speak naturally, and get feedback on communication, leadership, clarity, teamwork and reasoning.</p>
+    </div>
+    <div class="gd-hero-stat"><strong>3</strong><span>AI participants</span><small>real-time turns</small></div>
+  </section>
+
+  <section class="gd-layout">
+    <div class="gd-main-card">
+      <div class="gd-section-head"><div><h2>Start a practice session</h2><p>Build your own topic or let StudyBuddy create one.</p></div><span class="gd-live-pill">● LIVE AI</span></div>
+      <div class="gd-form-grid">
+        <label>Discussion topic<input id="groupTopic" placeholder="e.g. Is AI replacing software developers?"></label>
+        <label>Target role<input id="groupRole" value="Java Developer" placeholder="Java Developer / Any Role"></label>
+      </div>
+      <div class="gd-actions">
+        <button id="generateGroupTopic" class="gd-btn gd-secondary">✨ Generate topic</button>
+        <button id="generateTenTopics" class="gd-btn gd-secondary">▦ Explore 10 topics</button>
+        <button id="startGroup" class="gd-btn gd-primary">▶ Enter discussion room</button>
+      </div>
+      <div id="topicList" class="gd-topic-list output-box"></div>
+      <div class="gd-skills">
+        <span>🎯 Clarity</span><span>🤝 Collaboration</span><span>🧠 Reasoning</span><span>👑 Leadership</span><span>⏱️ Time control</span>
+      </div>
+      <div id="groupChat" class="gd-room"></div>
+    </div>
+
+    <aside class="gd-side">
+      <div class="gd-side-card">
+        <h3>Learning paths</h3>
+        <p>Practice the skills that matter in placement and interview GD rounds.</p>
+        <div class="gd-path"><b>🎓 Placement GD</b><small>Opening · examples · conclusion</small></div>
+        <div class="gd-path"><b>💻 Software & Data</b><small>Technology · business · ethics</small></div>
+        <div class="gd-path"><b>👑 Leadership</b><small>Synthesizer · bridge · consensus</small></div>
+      </div>
+      <div class="gd-side-card">
+        <h3>How the room works</h3>
+        <ol><li>AI panelists open the discussion.</li><li>You speak or type your response.</li><li>Different AI personas challenge and build on your ideas.</li><li>End the session for an AI scorecard.</li></ol>
+      </div>
+    </aside>
+  </section>
+</main>
+<script src="../js/api.js"></script><script src="../js/group.js"></script>
+</body></html>

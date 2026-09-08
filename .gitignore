@@ -1,0 +1,12 @@
+target/
+data/
+*.class
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Local secrets / environment files
+.env
+.env.*
+!.env.example

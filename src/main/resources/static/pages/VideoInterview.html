@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>AI Video Interview</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/advanced-practice.css">
+
+</head>
+
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🤖 StudyBuddy AI
+    </div>
+
+    <nav>
+
+        <a href="AdvancedPractice.html">
+            ← Advanced Practice
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <span class="badge">
+            🎥 REAL-TIME VIDEO
+        </span>
+
+        <h1>
+            AI Video Interview
+        </h1>
+
+        <p>
+            Practice camera presence, speaking,
+            confidence and answer structure.
+        </p>
+
+    </section>
+
+
+    <section class="coding-card">
+
+        <div
+            style="
+            background:#020617;
+            border-radius:18px;
+            padding:15px;
+            text-align:center;
+            "
+        >
+
+            <video
+                id="cameraPreview"
+                autoplay
+                muted
+                playsinline
+                style="
+                width:100%;
+                max-width:700px;
+                border-radius:12px;
+                "
+            ></video>
+
+        </div>
+
+
+        <div style="text-align:center;margin-top:25px;">
+
+            <button
+                id="startVideo"
+                class="primary-button">
+
+                🎥 Start Video Interview
+
+            </button>
+
+
+            <button
+                id="stopVideo"
+                class="primary-button"
+                style="display:none;">
+
+                ⏹ Stop Interview
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="videoFeedback"
+            class="output-box">
+
+        </div>
+
+    </section>
+
+
+    <section class="coding-card">
+
+        <h2>
+            🤖 AI Video Feedback
+        </h2>
+
+        <div class="tips-grid">
+
+            <div class="tips">
+                <h3>👁 Eye Contact</h3>
+                <p>
+                    Analyze camera-facing behavior.
+                </p>
+            </div>
+
+            <div class="tips">
+                <h3>😊 Confidence</h3>
+                <p>
+                    Analyze presentation confidence.
+                </p>
+            </div>
+
+            <div class="tips">
+                <h3>🗣 Communication</h3>
+                <p>
+                    Analyze speaking clarity.
+                </p>
+            </div>
+
+            <div class="tips">
+                <h3>📈 Improvement</h3>
+                <p>
+                    AI suggests improvements.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="../js/api.js"></script>
+<script src="../js/video.js"></script>
+<script src="../js/future-features.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Voice Interview | StudyBuddy AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            color: #1e293b;
+        }
+
+        /* HEADER */
+        .header {
+            background: #111827;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            background: #374151;
+            padding: 10px 18px;
+            border-radius: 8px;
+        }
+
+        .back-btn:hover {
+            background: #4b5563;
+        }
+
+        /* MAIN */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title-section h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .title-section p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        /* GRID */
+        .interview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            color: #111827;
+        }
+
+        /* QUESTION */
+        .question-box {
+            background: #eef2ff;
+            border-left: 5px solid #4f46e5;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .question-label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #4f46e5;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        /* MICROPHONE */
+        .mic-area {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .mic {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 10px auto 25px;
+            background: #4f46e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.3);
+        }
+
+        .mic.recording {
+            animation: pulse 1.2s infinite;
+            background: #dc2626;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5);
+            }
+
+            70% {
+                transform: scale(1.08);
+                box-shadow: 0 0 0 25px rgba(220, 38, 38, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+            }
+        }
+
+        /* BUTTONS */
+        .buttons {
+            text-align: center;
+        }
+
+        button {
+            border: none;
+            padding: 13px 24px;
+            margin: 6px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .start-btn {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .start-btn:hover {
+            background: #4338ca;
+        }
+
+        .stop-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .stop-btn:hover {
+            background: #b91c1c;
+        }
+
+        .next-btn {
+            background: #059669;
+            color: white;
+        }
+
+        .next-btn:hover {
+            background: #047857;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* STATUS */
+        .status {
+            text-align: center;
+            margin-top: 15px;
+            color: #64748b;
+            font-weight: bold;
+        }
+
+        /* ANSWER */
+        .answer-box {
+            min-height: 220px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            line-height: 1.7;
+            color: #334155;
+        }
+
+        .placeholder {
+            color: #94a3b8;
+        }
+
+        /* FEEDBACK */
+        .feedback {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+
+        .feedback h3 {
+            color: #15803d;
+            margin-bottom: 10px;
+        }
+
+        .score {
+            font-size: 30px;
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        /* PROGRESS */
+        .progress-area {
+            margin-top: 25px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: #64748b;
+        }
+
+        .progress {
+            height: 9px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 20%;
+            background: #4f46e5;
+            transition: width 0.4s;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+            .interview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 15px 20px;
+            }
+
+            .title-section h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        🤖 StudyBuddy AI
+    </div>
+
+    <a href="../index.html" class="back-btn">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <section class="title-section">
+
+        <h1>🎙️ Voice Interview Simulation</h1>
+
+        <p>
+            Practice interview questions using your voice and receive instant feedback.
+        </p>
+
+    </section>
+
+
+    <div class="interview-grid">
+
+        <!-- QUESTION CARD -->
+
+        <div class="card">
+
+            <h2>Interview Question</h2>
+
+            <div class="question-box">
+
+                <div class="question-label">
+                    Question 1
+                </div>
+
+                <div id="question">
+                    Tell me about yourself and your technical skills.
+                </div>
+
+            </div>
+
+
+            <div class="progress-area">
+
+                <div class="progress-info">
+
+                    <span>Interview Progress</span>
+
+                    <span id="progressText">
+                        1 / 5
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        id="progressBar">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="mic-area">
+
+                <div
+                    class="mic"
+                    id="mic">
+                    🎤
+                </div>
+
+                <div class="buttons">
+
+                    <button
+                        class="start-btn"
+                        id="startBtn"
+                        onclick="startInterview()">
+
+                        🎙️ Start Speaking
+
+                    </button>
+
+                    <button
+                        class="stop-btn"
+                        id="stopBtn"
+                        onclick="stopInterview()"
+                        disabled>
+
+                        ⏹ Stop
+
+                    </button>
+
+                </div>
+
+                <div
+                    class="status"
+                    id="status">
+
+                    Click "Start Speaking" to answer.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ANSWER CARD -->
+
+        <div class="card">
+
+            <h2>📝 Your Answer</h2>
+
+            <div
+                class="answer-box"
+                id="answer">
+
+                <span class="placeholder">
+                    Your spoken answer will appear here...
+                </span>
+
+            </div>
+
+
+            <div class="feedback">
+
+                <h3>AI Interview Feedback</h3>
+
+                <p id="feedbackText">
+                    Complete your answer to receive feedback.
+                </p>
+
+                <br>
+
+                <span>
+                    Score:
+                </span>
+
+                <span
+                    class="score"
+                    id="score">
+
+                    --
+
+                </span>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button
+                    class="next-btn"
+                    onclick="nextQuestion()">
+
+                    Next Question →
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+let recognition = null;
+
+let isRecording = false;
+
+let questionIndex = 0;
+
+let questions = [
+
+    "Tell me about yourself and your technical skills.",
+
+    "What is your strongest programming language and why?",
+
+    "Explain one project that you have developed.",
+
+    "What is the difference between OOP and procedural programming?",
+
+    "Why should we hire you for this position?"
+
+];
+
+
+function startInterview() {
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+
+        document.getElementById("status").innerText =
+            "Speech recognition is not supported. Please use Google Chrome.";
+
+        return;
+    }
+
+
+    recognition = new SpeechRecognition();
+
+    recognition.lang = "en-US";
+
+    recognition.continuous = true;
+
+    recognition.interimResults = true;
+
+
+    recognition.onstart = function () {
+
+        isRecording = true;
+
+        document.getElementById("mic")
+            .classList.add("recording");
+
+        document.getElementById("status").innerText =
+            "🎙️ Listening... Speak your answer.";
+
+        document.getElementById("startBtn").disabled = true;
+
+        document.getElementById("stopBtn").disabled = false;
+
+    };
+
+
+    recognition.onresult = function(event) {
+
+        let transcript = "";
+
+        for (
+            let i = event.resultIndex;
+            i < event.results.length;
+            i++
+        ) {
+
+            transcript +=
+                event.results[i][0].transcript;
+
+        }
+
+
+        document.getElementById("answer").innerText =
+            transcript;
+
+    };
+
+
+    recognition.onerror = function(event) {
+
+        document.getElementById("status").innerText =
+            "Speech recognition error: " +
+            event.error;
+
+    };
+
+
+    recognition.onend = function() {
+
+        isRecording = false;
+
+        document.getElementById("mic")
+            .classList.remove("recording");
+
+        document.getElementById("startBtn").disabled = false;
+
+        document.getElementById("stopBtn").disabled = true;
+
+        document.getElementById("status").innerText =
+            "Recording completed.";
+
+        generateFeedback();
+
+    };
+
+
+    recognition.start();
+
+}
+
+
+function stopInterview() {
+
+    if (recognition && isRecording) {
+
+        recognition.stop();
+
+    }
+
+}
+
+
+function generateFeedback() {
+
+    const answer =
+        document.getElementById("answer")
+        .innerText.trim();
+
+
+    if (
+        answer === "" ||
+        answer === "Your spoken answer will appear here..."
+    ) {
+
+        return;
+
+    }
+
+
+    let score = 70;
+
+
+    if (answer.length > 100) {
+
+        score += 10;
+
+    }
+
+    if (answer.length > 250) {
+
+        score += 10;
+
+    }
+
+
+    if (
+        answer.toLowerCase().includes("java") ||
+        answer.toLowerCase().includes("spring") ||
+        answer.toLowerCase().includes("python") ||
+        answer.toLowerCase().includes("sql")
+    ) {
+
+        score += 5;
+
+    }
+
+
+    if (score > 100) {
+
+        score = 100;
+
+    }
+
+
+    document.getElementById("score")
+        .innerText = score + "/100";
+
+
+    if (score >= 85) {
+
+        document.getElementById("feedbackText").innerText =
+            "Excellent answer. Your response is detailed and technically relevant.";
+
+    }
+    else if (score >= 70) {
+
+        document.getElementById("feedbackText").innerText =
+            "Good answer. Try adding more specific technical examples and project experience.";
+
+    }
+    else {
+
+        document.getElementById("feedbackText").innerText =
+            "Try giving a more structured answer with your skills, projects and achievements.";
+
+    }
+
+}
+
+
+function nextQuestion() {
+
+    questionIndex++;
+
+
+    if (questionIndex >= questions.length) {
+
+        questionIndex = 0;
+
+    }
+
+
+    document.getElementById("question")
+        .innerText =
+        questions[questionIndex];
+
+
+    document.getElementById("progressText")
+        .innerText =
+        (questionIndex + 1) + " / " + questions.length;
+
+
+    const percentage =
+        ((questionIndex + 1) / questions.length) * 100;
+
+
+    document.getElementById("progressBar")
+        .style.width =
+        percentage + "%";
+
+
+    document.getElementById("answer").innerHTML =
+        '<span class="placeholder">' +
+        'Your spoken answer will appear here...' +
+        '</span>';
+
+
+    document.getElementById("feedbackText").innerText =
+        "Complete your answer to receive feedback.";
+
+
+    document.getElementById("score").innerText =
+        "--";
+
+
+    document.getElementById("status").innerText =
+        'Click "Start Speaking" to answer.';
+
+}
+
+</script>
+
+<script src="../js/api.js"></script>
+<script src="../js/future-features.js"></script>
+
+</body>
+</html>

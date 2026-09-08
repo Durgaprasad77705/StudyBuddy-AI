@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyBuddy AI - Advanced Practice</title>
+
+    <link rel="stylesheet" href="../css/advanced-practice.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🤖 StudyBuddy AI
+    </div>
+
+    <nav aria-label="Main Navigation">
+        <a href="/">Dashboard</a>
+        <a href="/#/start">New Interview</a>
+        <a href="/#/voice">Live Interview</a>
+        <a href="/#/chat">Chatbot</a>
+        <a class="active" href="/pages/AdvancedPractice.html">Advanced</a>
+        <a href="/#/history">History</a>
+        <a href="/#/progress">Progress</a>
+        <a href="/#/badges">Badges</a>
+        <a href="/#/profile">Profile</a>
+        <a href="/#/subscription">Subscription</a>
+        <a href="/" id="advancedLogout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <span class="badge">
+            ⚡ AI POWERED
+        </span>
+
+        <h1>
+            Advanced Practice Center
+        </h1>
+
+        <p>
+            Practice interviews, group discussions, coding, resume analysis,
+            AI career prediction and live job preparation in one place.
+        </p>
+
+    </section>
+
+
+    <!-- STANDARD INTERVIEW -->
+
+    <section class="standard-card">
+
+        <div>
+
+            <h2>
+                🎯 Start Standard Interview
+            </h2>
+
+            <p>
+                Begin a complete AI-powered interview session.
+            </p>
+
+        </div>
+
+        <button
+            id="standardInterviewButton"
+            class="primary-button"
+            type="button">
+
+            Start Standard Interview
+
+        </button>
+
+    </section>
+
+
+    <!-- PRACTICE OPTIONS -->
+
+    <section class="practice-grid">
+
+        <button
+            class="practice-button"
+            data-feature="Voice">
+
+            <span class="icon">🎤</span>
+
+            <strong>Voice</strong>
+
+            <small>
+                Real-time voice interview
+            </small>
+
+        </button>
+
+
+        <button
+            class="practice-button"
+            data-feature="Video">
+
+            <span class="icon">🎥</span>
+
+            <strong>Video</strong>
+
+            <small>
+                Camera interview simulation
+            </small>
+
+        </button>
+
+
+        <button
+            class="practice-button"
+            data-feature="Company">
+
+            <span class="icon">🏢</span>
+
+            <strong>Company</strong>
+
+            <small>
+                Company-focused questions
+            </small>
+
+        </button>
+
+
+        <button
+            class="practice-button"
+            data-feature="Coding">
+
+            <span class="icon">💻</span>
+
+            <strong>Coding</strong>
+
+            <small>
+                Real coding interview
+            </small>
+
+        </button>
+
+
+        <button
+            class="practice-button"
+            data-feature="Group">
+
+            <span class="icon">👥</span>
+
+            <strong>Group</strong>
+
+            <small>
+                AI group discussion
+            </small>
+
+        </button>
+
+
+        <button
+            class="practice-button"
+            data-feature="Resume">
+
+            <span class="icon">📄</span>
+
+            <strong>Resume</strong>
+
+            <small>
+                AI resume analysis
+            </small>
+
+        </button>
+
+
+        <button
+            class="practice-button"
+            data-feature="Prediction">
+
+            <span class="icon">🤖</span>
+
+            <strong>AI Prediction</strong>
+
+            <small>
+                Career & job prediction
+            </small>
+
+        </button>
+
+
+        <button
+            class="practice-button"
+            data-feature="Jobs">
+
+            <span class="icon">💼</span>
+
+            <strong>Jobs</strong>
+
+            <small>
+                Job matching & preparation
+            </small>
+
+        </button>
+
+    </section>
+
+
+    <!-- CODING PREPARATION -->
+
+    <section class="coding-card">
+
+        <div class="section-heading">
+
+            <span class="badge">
+                💻 CODING
+            </span>
+
+            <h2>
+                Coding Interview Preparation
+            </h2>
+
+            <p>
+                Practice algorithmic reasoning, code clarity,
+                edge cases and interview-style problem solving.
+            </p>
+
+        </div>
+
+
+        <div class="tips-grid">
+
+            <div class="tips">
+
+                <h3>💡 Tips</h3>
+
+                <ul>
+
+                    <li>
+                        Write clean and readable code.
+                    </li>
+
+                    <li>
+                        Explain your thought process.
+                    </li>
+
+                    <li>
+                        Select the correct data structure.
+                    </li>
+
+                    <li>
+                        Check edge cases.
+                    </li>
+
+                    <li>
+                        Analyze time and space complexity.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="tips">
+
+                <h3>🚀 Suggestions</h3>
+
+                <ul>
+
+                    <li>
+                        Practice common Java coding problems.
+                    </li>
+
+                    <li>
+                        Talk through your approach before coding.
+                    </li>
+
+                    <li>
+                        Keep your implementation simple.
+                    </li>
+
+                    <li>
+                        Test boundary conditions.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="coding-controls">
+
+            <div class="field">
+
+                <label>
+                    Language
+                </label>
+
+                <select id="language">
+
+                    <option value="Java">
+                        Java
+                    </option>
+
+                    <option value="Python">
+                        Python
+                    </option>
+
+                    <option value="C++">
+                        C++
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Problem Type
+                </label>
+
+                <select id="problemType">
+
+                    <option value="Arrays">
+                        Arrays
+                    </option>
+
+                    <option value="Strings">
+                        Strings
+                    </option>
+
+                    <option value="Linked List">
+                        Linked List
+                    </option>
+
+                    <option value="Stack and Queue">
+                        Stack & Queue
+                    </option>
+
+                    <option value="Trees">
+                        Trees
+                    </option>
+
+                    <option value="Graphs">
+                        Graphs
+                    </option>
+
+                    <option value="Dynamic Programming">
+                        Dynamic Programming
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Experience Level
+                </label>
+
+                <select id="experienceLevel">
+
+                    <option value="Entry">
+                        Entry
+                    </option>
+
+                    <option value="Mid">
+                        Mid
+                    </option>
+
+                    <option value="Senior">
+                        Senior
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="getCodingPrep"
+            class="primary-button">
+
+            🤖 Get Coding Prep
+
+        </button>
+
+
+        <div
+            id="codingOutput"
+            class="output-box">
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="../js/api.js"></script>
+<script src="../js/advanced-practice.js"></script>
+
+</body>
+</html>
