@@ -68,3 +68,9 @@ ai:
 logging:
   level:
     com.aicoach: INFO
+    app:
+  recovery:
+    secret: StudyBuddyRecovery2026_ChangeMe_7392
+    app:
+  recovery:
+    secret: ${APP_RECOVERY_SECRET:}
