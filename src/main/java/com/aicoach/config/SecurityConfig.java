@@ -44,49 +44,110 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, PasswordEncoder passwordEncoder) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            PasswordEncoder passwordEncoder) throws Exception {
+
         http
                 .csrf(csrf -> csrf.disable())
+
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                // OAuth2 requires a short-lived HTTP session during the provider redirect.
-                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+
+                // OAuth2 requires a short-lived HTTP session
+                // during the provider redirect.
+                .sessionManagement(sm -> sm
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+
                 .authorizeHttpRequests(auth -> auth
+
+                        // Authentication endpoints
                         .requestMatchers("/api/auth/**").permitAll()
-                        // All payment/order/status/trial/verify actions belong to the
-                        // currently logged-in user. Only the Razorpay webhook is public
-                        // because Razorpay calls it server-to-server and it is protected
-                        // by X-Razorpay-Signature in PaymentController.
+
+                        // Temporary database recovery endpoint.
+                        // The controller itself verifies X-Recovery-Secret.
+                        .requestMatchers("/api/recovery/**").permitAll()
+
+                        // Razorpay webhook is public because Razorpay
+                        // calls it server-to-server.
                         .requestMatchers("/api/payments/webhook").permitAll()
+
+                        // Other payment APIs require login.
                         .requestMatchers("/api/payments/**").authenticated()
+
+                        // OAuth2
                         .requestMatchers("/oauth2/**", "/login/**").permitAll()
+
+                        // H2 console
                         .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/pages/**", "/favicon.ico").permitAll()
+
+                        // Frontend public resources
+                        .requestMatchers(
+                                "/",
+                                "/index.html",
+                                "/css/**",
+                                "/js/**",
+                                "/pages/**",
+                                "/favicon.ico"
+                        ).permitAll()
+
+                        // All other API endpoints require authentication.
                         .requestMatchers("/api/**").authenticated()
+
+                        // Everything else
                         .anyRequest().permitAll()
                 )
-                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
-                .authenticationProvider(authenticationProvider(passwordEncoder))
-                .oauth2Login(oauth -> oauth.successHandler(oAuth2LoginSuccessHandler))
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+                .headers(headers ->
+                        headers.frameOptions(frame -> frame.sameOrigin())
+                )
+
+                .authenticationProvider(
+                        authenticationProvider(passwordEncoder)
+                )
+
+                .oauth2Login(oauth ->
+                        oauth.successHandler(oAuth2LoginSuccessHandler)
+                )
+
+                .addFilterBefore(
+                        jwtAuthFilter,
+                        UsernamePasswordAuthenticationFilter.class
+                );
 
         return http.build();
     }
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
+
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.stream(allowedOrigins.split(","))
-                .map(String::trim).filter(s -> !s.isBlank()).toList());
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        configuration.setAllowedOrigins(
+                Arrays.stream(allowedOrigins.split(","))
+                        .map(String::trim)
+                        .filter(s -> !s.isBlank())
+                        .toList()
+        );
+
+        configuration.setAllowedMethods(
+                List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")
+        );
+
         configuration.setAllowedHeaders(List.of("*"));
+
         configuration.setAllowCredentials(true);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+
+        source.registerCorsConfiguration("/", configuration);
+
         return source;
     }
 }
