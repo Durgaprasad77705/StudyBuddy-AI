@@ -57,6 +57,9 @@ app:
   frontend:
     base-url: ${FRONTEND_BASE_URL:http://localhost:8099}
 
+  recovery:
+    secret: ${APP_RECOVERY_SECRET:}
+
 ai:
   provider: ${AI_PROVIDER:ollama}
   api-key: ${ANTHROPIC_API_KEY:}
@@ -68,9 +71,3 @@ ai:
 logging:
   level:
     com.aicoach: INFO
-    app:
-  recovery:
-    secret: StudyBuddyRecovery2026_ChangeMe_7392
-    app:
-  recovery:
-    secret: ${APP_RECOVERY_SECRET:}
